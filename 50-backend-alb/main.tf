@@ -3,11 +3,12 @@ module "backend_alb" {
   version  = "v10.4.0"
   internal = true
 
-  name                  = "${var.project}-${var.environment}-backend-alb" #roboshop-dev-backend-alb
-  vpc_id                = local.vpc_id.value
-  subnets               = local.private_subnet_ids
-  create_security_group = false
-  security_groups       = [local.backend_alb_sg_id] #list it should be error 
+  name                       = "${var.project}-${var.environment}-backend-alb" #roboshop-dev-backend-alb
+  vpc_id                     = local.vpc_id.value
+  subnets                    = local.private_subnet_ids
+  create_security_group      = false
+  security_groups            = [local.backend_alb_sg_id] #list it should be error 
+  enable_deletion_protection = false
 
 
 
