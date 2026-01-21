@@ -1,11 +1,10 @@
-data "aws_ami" "openvpn" {
-  owners      = ["973714476881"] # JoinDevOps Account ID
+/* data "aws_ami" "openvpn" {
+  owners      = ["941948905053"] # Correct OpenVPN AMI owner
   most_recent = true
 
   filter {
     name   = "name"
-    values = ["Redhat-9-DevOps-Practice"]
-
+    values = ["OpenVPN Access Server Community Image-fe8020db-*"]
   }
 
   filter {
@@ -17,7 +16,17 @@ data "aws_ami" "openvpn" {
     name   = "virtualization-type"
     values = ["hvm"]
   }
+} */
+
+data "aws_ami" "openvpn" {
+  owners = ["679593333241"]
+
+  filter {
+    name   = "image-id"
+    values = ["ami-058fbc284998614e2"]
+  }
 }
+
 
 data "aws_ssm_parameter" "vpn_sg_id" {
   name = "/${var.project}/${var.environment}/vpn_sg_id"

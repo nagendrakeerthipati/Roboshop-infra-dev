@@ -21,3 +21,24 @@ variable "bastion_sg_name" {
 variable "bastion_sg_description" {
   default = "created sg for bastion instance"
 }
+
+
+variable "mongodb_ports_vpn_ssh" {
+  default = [22, 27017]
+
+}
+
+variable "redis_vpn_ssh" {
+  default = [22, 6379]
+
+}
+
+variable "mysql_vpn_ssh" {
+  default = [22, 3306]
+}
+
+# Rabbitmq ports for vpn sg to rabbitmq sg [22,5672]
+variable "rabbitmq_vpn_ssh" {
+  default = [22, 5672]
+
+}
