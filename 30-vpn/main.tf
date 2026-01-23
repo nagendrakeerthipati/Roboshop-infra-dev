@@ -21,3 +21,12 @@ resource "aws_instance" "vpn" {
     }
   )
 }
+
+resource "aws_route53_record" "vpn" {
+  zone_id         = var.zone_id
+  name            = "vpn-${var.environment}.${var.zone_name}"
+  type            = "A"
+  ttl             = 1
+  allow_overwrite = true
+  records         = [aws_instance.vpn.public_ip] #assigning private ip of vpn instance(database) to this record  
+}
